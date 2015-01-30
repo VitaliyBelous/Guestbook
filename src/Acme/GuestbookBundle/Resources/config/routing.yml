@@ -1,0 +1,15 @@
+acme_guestbook_homepage:
+    path:     /
+    defaults: { _controller: AcmeGuestbookBundle:Default:new }
+
+task_new:
+    path:     /new
+    defaults: { _controller: AcmeGuestbookBundle:Default:new }
+
+task_success:
+    path:     /success
+    defaults: { _controller: AcmeGuestbookBundle:Default:new }
+
+task_show:
+    path:     /show
+    defaults: { _controller: AcmeGuestbookBundle:Show:show}

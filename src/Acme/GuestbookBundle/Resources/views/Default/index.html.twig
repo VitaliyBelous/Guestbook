@@ -1,0 +1,65 @@
+{% extends "AcmeGuestbookBundle::layout.html.twig" %}
+{% block body %}
+<h1 class="title">Leave&nbsp;your&nbsp;comment&nbsp;about&nbsp;the&nbsp;site&nbsp;here</h1> <br />
+{% for tasks in task %}
+   <div class="comment">
+       <div class="top_row">
+           <ul>
+               <li class="author">{{ tasks.author }}</li>
+               <li class="point">Point:&nbsp;{{ tasks.point}}</li>
+               <li class="date">Date:&nbsp;{{ tasks.dueDate|date('d-m-Y H:i:s') }}</li>
+           </ul>
+       </div>
+       <table border="1" cellspacing="0" cellpadding="7">
+           <tr>
+               <td width="160px">{{ tasks.site }}</td>
+               <td>{{ tasks.comment }}</td><br />
+           </tr>
+       </table>
+   </div>
+{% endfor %}
+{% endblock %}
+{% block form %}
+<form id="myForm" action="{{ path('acme_guestbook_homepage') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+
+    <div class="field1">
+        {{ form_label(form.author, 'Your name:') }}
+        {{ form_errors(form.author) }}
+        {{ form_widget(form.author) }}
+    </div><br />
+
+    <div class="field2">
+        {{ form_label(form.dueDate, 'Date:') }}
+        {{ form_errors(form.dueDate) }}
+        {{ form_widget(form.dueDate) }}
+    </div><br />
+
+    <div class="field3">
+        {{ form_label(form.site, 'Site:') }}
+        {{ form_errors(form.site) }}
+        {{ form_widget(form.site, { 'attr': {
+            'style' : 'width:525px',
+            'rows' : '1' }} ) }}
+    </div><br />
+
+    <div class="field4">
+        {{ form_label(form.comment, 'Comment:') }}
+        {{ form_errors(form.comment) }}
+        {{ form_widget(form.comment, { 'attr': {
+            'style' : 'width:523px',
+            'rows' : '4',
+            'cols' : '30' }} ) }}
+    </div><br />
+
+    <div class="field5">
+        {{ form_label(form.point, 'Point') }}
+        {{ form_errors(form.point) }}
+        {{ form_widget(form.point) }}
+    </div>
+
+    {{ form_rest(form) }}
+
+    <input class="field6" type="submit" value="Send" />
+</form>
+{% endblock %}

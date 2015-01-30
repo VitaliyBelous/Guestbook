@@ -1,0 +1,13 @@
+Acme\GuestbookBundle\Entity\Task:
+    properties:
+        author:
+            - NotBlank: ~
+        dueDate:
+            - NotBlank: ~
+            - Type: \DateTime
+        site:
+            - NotBlank: ~
+        comment:
+            - NotBlank: ~
+        point:
+            - NotBlank: ~
