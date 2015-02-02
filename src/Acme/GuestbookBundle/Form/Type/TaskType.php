@@ -10,7 +10,6 @@ class TaskType extends AbstractType
     {
         $builder
             ->add('author', 'text', array('max_length' => 50))
-            ->add('dueDate', 'datetime', array('widget' => 'single_text'))
             ->add('site', 'text')
             ->add('comment', 'textarea')
             ->add('point', 'choice', array(
@@ -28,20 +27,11 @@ class TaskType extends AbstractType
                     '10'=>'10'
                 )
             ))
-
             ->getForm();
-
     }
 
     public function getName()
     {
         return 'task';
-    }
-
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => 'Acme\GuestbookBundle\Entity\Task',
-        );
     }
 }

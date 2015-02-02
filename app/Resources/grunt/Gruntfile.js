@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-    var themeDir = '../../../';
+    var themeDir = '../../../src/Acme/GuestbookBundle/Resources/public';
 
     var gruntConfig = {
         pkg: grunt.file.readJSON('package.json'),
@@ -22,8 +22,8 @@ module.exports = function(grunt) {
         compass: {
             theme: {
                 options: {
-                    sassDir: themeDir + 'resources/scss',
-                    cssDir: themeDir + 'web/css',
+                    sassDir: themeDir + '/scss',
+                    cssDir: themeDir + '/css',
                     environment: 'development',
                     outputStyle: 'expanded',
                     relativeAssets: true

@@ -20,19 +20,14 @@
 {% endfor %}
 {% endblock %}
 {% block form %}
-<form id="myForm" action="{{ path('acme_guestbook_homepage') }}" method="post" {{ form_enctype(form) }}>
+<div id="message"></div>
+<form id="myForm" action="{{ path('task_new') }}" method="post" {{ form_enctype(form) }}>
     {{ form_errors(form) }}
 
     <div class="field1">
         {{ form_label(form.author, 'Your name:') }}
         {{ form_errors(form.author) }}
         {{ form_widget(form.author) }}
-    </div><br />
-
-    <div class="field2">
-        {{ form_label(form.dueDate, 'Date:') }}
-        {{ form_errors(form.dueDate) }}
-        {{ form_widget(form.dueDate) }}
     </div><br />
 
     <div class="field3">

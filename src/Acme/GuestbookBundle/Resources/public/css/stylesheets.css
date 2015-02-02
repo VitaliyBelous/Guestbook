@@ -1,0 +1,147 @@
+/* line 1, ../scss/stylesheets.scss */
+html, body {
+  height: 100%;
+  font: 11px Tahoma, Sans-serif;
+  background-color: white;
+  width: 100%;
+}
+
+/* line 8, ../scss/stylesheets.scss */
+.wrapper {
+  min-height: 100%;
+  position: relative;
+  width: 1000px;
+  margin: auto;
+  background-color: #f9ecec;
+}
+
+/* line 16, ../scss/stylesheets.scss */
+.header {
+  background-color: #483d8d;
+  height: 100px;
+}
+/* line 19, ../scss/stylesheets.scss */
+.header p {
+  font-size: 20px;
+  padding-top: 35px;
+}
+
+/* line 25, ../scss/stylesheets.scss */
+.title {
+  margin: 10px 0 0 20px;
+  font-size: 18px;
+  color: #444444;
+  text-decoration: underline;
+}
+
+/* line 32, ../scss/stylesheets.scss */
+.content {
+  width: 1000px;
+  margin: auto;
+  min-height: 300px;
+  max-height: 100%;
+}
+
+/* line 39, ../scss/stylesheets.scss */
+.form_block {
+  height: 186px;
+  padding: 10px;
+}
+
+/* line 44, ../scss/stylesheets.scss */
+.comment {
+  margin-top: 2px;
+}
+
+/* line 48, ../scss/stylesheets.scss */
+.top_row {
+  display: inline-block;
+  width: 100%;
+  background-color: #b0c4de;
+}
+
+/* line 54, ../scss/stylesheets.scss */
+ul {
+  list-style: none;
+}
+
+/* line 58, ../scss/stylesheets.scss */
+li {
+  margin: 4px 0 4px 20px;
+  float: left;
+}
+
+/* line 63, ../scss/stylesheets.scss */
+.author {
+  color: #ffffff;
+}
+
+/* line 67, ../scss/stylesheets.scss */
+.date {
+  margin-right: 20px;
+  color: #6a5acd;
+  float: right;
+}
+
+/* line 73, ../scss/stylesheets.scss */
+.point {
+  float: right;
+  margin-right: 20px;
+  color: #6a5acd;
+}
+
+/* line 79, ../scss/stylesheets.scss */
+table {
+  width: 100%;
+  table-layout: fixed;
+  border: solid 1px steelblue;
+  word-wrap: break-word;
+  margin-top: -3px;
+  background-color: #f6f6f6;
+}
+
+/* line 88, ../scss/stylesheets.scss */
+form {
+  position: relative;
+}
+
+/* line 92, ../scss/stylesheets.scss */
+.field1, .field2, .field3, .field4, .field5, .field6 {
+  position: absolute;
+  right: 0;
+}
+
+/* line 97, ../scss/stylesheets.scss */
+.field2 {
+  right: 100px;
+  top: 25px;
+}
+
+/* line 102, ../scss/stylesheets.scss */
+.field3 {
+  top: 53px;
+}
+
+/* line 106, ../scss/stylesheets.scss */
+.field4 {
+  top: 78px;
+}
+
+/* line 110, ../scss/stylesheets.scss */
+.field5 {
+  top: 26px;
+}
+
+/* line 114, ../scss/stylesheets.scss */
+.field6 {
+  margin-top: 85px;
+}
+
+/* line 118, ../scss/stylesheets.scss */
+.footer {
+  height: 30px;
+  width: 100%;
+  background-color: #483d8d;
+  position: absolute;
+  bottom: 0;
+}
