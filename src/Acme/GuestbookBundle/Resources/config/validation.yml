@@ -2,6 +2,11 @@ Acme\GuestbookBundle\Entity\Task:
     properties:
         author:
             - NotBlank: ~
+            - Length:
+                min: 6
+                max: 50
+                minMessage: "Your name must be at least {{ limit }} characters long"
+                maxMessage: "Your name cannot be longer than {{ limit }} characters long"
         dueDate:
             - NotBlank: ~
             - Type: \DateTime

@@ -1,36 +1,60 @@
 {% extends "AcmeGuestbookBundle::layout.html.twig" %}
 {% block body %}
-<h1 class="title">Leave&nbsp;your&nbsp;comment&nbsp;about&nbsp;the&nbsp;site&nbsp;here</h1> <br />
-{% for tasks in task %}
-   <div class="comment">
-       <div class="top_row">
-           <ul>
-               <li class="author">{{ tasks.author }}</li>
-               <li class="point">Point:&nbsp;{{ tasks.point}}</li>
-               <li class="date">Date:&nbsp;{{ tasks.dueDate|date('d-m-Y H:i:s') }}</li>
-           </ul>
-       </div>
-       <table border="1" cellspacing="0" cellpadding="7">
-           <tr>
-               <td width="160px">{{ tasks.site }}</td>
-               <td>{{ tasks.comment }}</td><br />
-           </tr>
-       </table>
-   </div>
-{% endfor %}
+<h1 class="title">Leave&nbsp;your&nbsp;comment&nbsp;about&nbsp;any&nbsp;site&nbsp;here</h1> <br />
+    <div class="sorting">
+        <div class="count">
+            Total comments: {{ pagination.getTotalItemCount }}
+        </div>
+        <ul class="sort_item">
+            {#<th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>#}
+            <li class="sort_by">Sort by:&nbsp;</li>
+            <li{% if pagination.isSorted('a.author') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Author', 'a.author') }}</li>
+            <li{% if pagination.isSorted('a.site') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Site', 'a.site') }}</li>
+            {#<li{% if pagination.isSorted('a.comment') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Comment', 'a.comment') }}</li>#}
+            <li{% if pagination.isSorted('a.point') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Point', 'a.point') }}</li>
+            <li{% if pagination.isSorted('a.dueDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date', 'a.dueDate') }}</li>
+        </ul>
+    </div>
+    <div class="navigation" align="right">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+    {# table body #}
+    {% for comment in pagination %}
+    <div class="comment">
+        <div class="top_row">
+            <ul>
+                <li class="author">{{ comment.author }}</li>
+                <li class="date">Date:&nbsp;{{ comment.dueDate|date('d-m-Y H:i:s') }}</li>
+                <li class="point">Point:&nbsp;{{ comment.point }}</li>
+            </ul>
+        </div>
+        <table border="1" cellspacing="0" cellpadding="7">
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
+                <td width="160px">{{ comment.site }}</td>
+                <td>{{ comment.comment }}</td>
+            </tr>
+        </table>
+    </div>
+    {% endfor %}
+
+    {# display navigation #}
+    <div class="navigation" align="right">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 {% endblock %}
 {% block form %}
-<div id="message"></div>
-<form id="myForm" action="{{ path('task_new') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_errors(form) }}
+<div class="message">{{ form_errors(form.author) }}</div>
+<div class="error"> {{ form_errors(form) }}</div>
+<form id="myForm" action="{{ path('acme_guestbook_homepage') }}" method="post" {{ form_enctype(form) }}>
 
-    <div class="field1">
+
+    <div class="field_author">
         {{ form_label(form.author, 'Your name:') }}
-        {{ form_errors(form.author) }}
         {{ form_widget(form.author) }}
     </div><br />
 
-    <div class="field3">
+    <div class="field_site">
         {{ form_label(form.site, 'Site:') }}
         {{ form_errors(form.site) }}
         {{ form_widget(form.site, { 'attr': {
@@ -38,7 +62,7 @@
             'rows' : '1' }} ) }}
     </div><br />
 
-    <div class="field4">
+    <div class="field_comment">
         {{ form_label(form.comment, 'Comment:') }}
         {{ form_errors(form.comment) }}
         {{ form_widget(form.comment, { 'attr': {
@@ -47,7 +71,7 @@
             'cols' : '30' }} ) }}
     </div><br />
 
-    <div class="field5">
+    <div class="field_point">
         {{ form_label(form.point, 'Point') }}
         {{ form_errors(form.point) }}
         {{ form_widget(form.point) }}
@@ -55,6 +79,6 @@
 
     {{ form_rest(form) }}
 
-    <input class="field6" type="submit" value="Send" />
+    <input class="button_submit" type="submit" value="Send" />
 </form>
 {% endblock %}

@@ -11,11 +11,11 @@ $(document).ready(function() {
             dataType: 'json',
             success:
             function(data) {
-                //var $messageTable = $('#message');
-                //var $commentsContainer = $('.content');
-                //$form[0].reset();
-                //$(data['data']).appendTo($commentsContainer);
-                //$(data['message']).appendTo($messageTable);
+                var $messageTable = $('#message');
+                var $commentsContainer = $('.content');
+                $form[0].reset();
+                $(data['data']).appendTo($commentsContainer);
+                $(data['message']).appendTo($messageTable);
             }
         });
 

@@ -16,6 +16,7 @@ html, body {
 .header {
   background-color: #483d8d;
   height: 100px;
+  border-radius: 5px;
   p {
     font-size: 20px;
     padding-top: 35px;
@@ -32,13 +33,39 @@ html, body {
 .content {
   width: 1000px;
   margin: auto;
-  min-height: 200px;
+  min-height: 1px;
   max-height: 100%;
 }
 
-.form_block {
-  height: 186px;
-  padding: 10px;
+.sorting {
+  display: inline-block;
+  width: 100%;
+}
+
+.sort_by {
+  font-size: 14px;
+  color: #4a6a89;
+}
+
+.count {
+  margin-left: 20px;
+  float: left;
+  color: #4a6a89;
+  font-size: 12px;
+}
+
+.sort_item {
+  float: right;
+  list-style: none;
+  margin-right: 15px;
+  li {
+    float: left;
+    margin: 0 5px 0 5px;
+  }
+}
+
+.navigation {
+  margin-left: 20px;
 }
 
 .comment {
@@ -46,26 +73,25 @@ html, body {
 }
 
 .top_row {
-  display: inline-block;
-  width: 100%;
   background-color: #b0c4de;
-}
-
-ul {
-  list-style: none;
-}
-
-li {
-  margin: 4px 0 4px 20px;
-  float: left;
+  border-radius: 5px;
+  ul {
+    display: inline-block;
+    list-style: none;
+    width: 100%;
+  }
+  li {
+    margin: 4px 20px 4px 20px;
+  }
 }
 
 .author {
   color: #ffffff;
+  float: left;
 }
 
 .date {
-  margin-right: 20px;
+  right: 20px;
   color: #6a5acd;
   float: right;
 }
@@ -79,46 +105,65 @@ li {
 table {
   width: 100%;
   table-layout: fixed;
-  border: solid 1px steelblue;
   word-wrap: break-word;
   margin-top: -3px;
   background-color: #f6f6f6;
+  border-radius: 5px;
 }
 
-form {
+.form_block {
+  height: 100%;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.message {
+  margin: 10px 20px 0 20px;
+  font-size: 12px;
+  color: #880000;
+  font-weight: bold;
+}
+
+.error {
+  margin-left: 20px;
+}
+
+.form_block form {
+  margin: 10px 20px 20px 20px;
   position: relative;
+  height: 140px;
 }
 
-.field1, .field2, .field3, .field4, .field5, .field6 {
+.field_author, .field_site, .field_comment, .field_point, .button_submit {
   position: absolute;
-  right: 0;
 }
 
-.field2 {
-  right: 100px;
+.field_site {
   top: 25px;
+  left: 44px;
 }
 
-.field3 {
-  top: 53px;
+.field_comment {
+  top: 50px;
+  left: 8px;
 }
 
-.field4 {
-  top: 78px;
+.field_point {
+  top: 0;
+  left: 300px;
 }
 
-.field5 {
-  top: 26px;
-}
-
-.field6 {
-  margin-top: 85px;
+.button_submit {
+  top: 120px;
+  left: 558px;
 }
 
 .footer {
   height: 30px;
   width: 100%;
   background-color: #483d8d;
+  border-radius: 5px;
   position: absolute;
   bottom: 0;
 }
