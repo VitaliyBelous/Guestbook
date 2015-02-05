@@ -1,6 +1,6 @@
 acme_guestbook_homepage:
     path:     /
-    defaults: { _controller: AcmeGuestbookBundle:Default:index }
+    defaults: { _controller: AcmeGuestbookBundle:Default:new }
 
 task_new:
     path:     /new

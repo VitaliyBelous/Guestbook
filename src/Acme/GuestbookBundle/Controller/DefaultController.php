@@ -10,8 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    public function indexAction(Request $request)
+    public function newAction(Request $request)
     {
+
         $em    = $this->get('doctrine.orm.entity_manager');
         $dql   = "SELECT a FROM AcmeGuestbookBundle:Task a";
         $query = $em->createQuery($dql);
@@ -22,13 +23,7 @@ class DefaultController extends Controller
             $request->query->get('page', 1)/*page number*/,
             10/*limit per page*/
         );
-        $form = $this->createForm(new TaskType(), new Task());
-        return $this->render('AcmeGuestbookBundle:Default:index.html.twig', array(
-            'form' => $form->createView(), 'pagination' => $pagination
-        ));
-    }
-    public function newAction(Request $request)
-    {
+
         $task = new Task();
         $task->setAuthor('');
         $task->setDueDate(new \DateTime());
@@ -51,10 +46,10 @@ class DefaultController extends Controller
                     'Thank You for review, You can add another one!'
                 );
 
-                return $this->redirect($this->generateUrl('acme_guestbook_homepage'));
+                return $this->redirect($this->generateUrl('task_new'));
             }
         }
-        return $this->render('AcmeGuestbookBundle:Default:index.html.twig', array( 'form' => $form->createView() ));
+        return $this->render('AcmeGuestbookBundle:Default:index.html.twig', array( 'form' => $form->createView(),'pagination' => $pagination ));
     }
 
 
