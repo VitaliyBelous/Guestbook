@@ -47,7 +47,7 @@
 {% block form %}
 <div class="message">{{ form_errors(form.author) }}</div>
 <div class="error"> {{ form_errors(form) }}</div>
-<form id="myForm" action="{{ path('acme_guestbook_homepage') }}" method="post" {{ form_enctype(form) }}>
+<form id="myForm" action="{{ path('task_new') }}" method="post" {{ form_enctype(form) }}>
 
     <div class="field_author">
         {{ form_label(form.author, 'Your name:') }}
