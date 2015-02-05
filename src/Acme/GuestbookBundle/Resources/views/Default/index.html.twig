@@ -42,12 +42,12 @@
     <div class="navigation" align="right">
         {{ knp_pagination_render(pagination) }}
     </div>
+<div id="message"></div>
 {% endblock %}
 {% block form %}
 <div class="message">{{ form_errors(form.author) }}</div>
 <div class="error"> {{ form_errors(form) }}</div>
-<form id="myForm" action="{{ path('acme_guestbook_homepage') }}" method="post" {{ form_enctype(form) }}>
-
+<form id="myForm" action="{{ path('task_new') }}" method="post" {{ form_enctype(form) }}>
 
     <div class="field_author">
         {{ form_label(form.author, 'Your name:') }}
@@ -78,7 +78,16 @@
     </div>
 
     {{ form_rest(form) }}
-
-    <input class="button_submit" type="submit" value="Send" />
+    <input class="button_submit" type="submit" value="Send"   />
 </form>
 {% endblock %}
+{% block flashMessage %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice" align="center">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+

@@ -6,13 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Acme\GuestbookBundle\Entity\Task;
 use Symfony\Component\HttpFoundation\Request;
 use Acme\GuestbookBundle\Form\Type\TaskType;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-
     public function indexAction(Request $request)
     {
-
         $em    = $this->get('doctrine.orm.entity_manager');
         $dql   = "SELECT a FROM AcmeGuestbookBundle:Task a";
         $query = $em->createQuery($dql);
@@ -23,7 +22,13 @@ class DefaultController extends Controller
             $request->query->get('page', 1)/*page number*/,
             10/*limit per page*/
         );
-
+        $form = $this->createForm(new TaskType(), new Task());
+        return $this->render('AcmeGuestbookBundle:Default:index.html.twig', array(
+            'form' => $form->createView(), 'pagination' => $pagination
+        ));
+    }
+    public function newAction(Request $request)
+    {
         $task = new Task();
         $task->setAuthor('');
         $task->setDueDate(new \DateTime());
@@ -37,15 +42,23 @@ class DefaultController extends Controller
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($task);
-                $em->flush();
+                $user = $this->getDoctrine()->getEntityManager();
+                        $user->persist($task);
+                        $user->flush();
+
+                $request->getSession()->getFlashBag()->add(
+                    'notice',
+                    'Thank You for review, You can add another one!'
+                );
 
                 return $this->redirect($this->generateUrl('acme_guestbook_homepage'));
             }
         }
-        return $this->render('AcmeGuestbookBundle:Default:index.html.twig', array( 'form' => $form->createView(),'pagination' => $pagination ));
+        return $this->render('AcmeGuestbookBundle:Default:index.html.twig', array( 'form' => $form->createView() ));
     }
 
 
 }
+
+
+
